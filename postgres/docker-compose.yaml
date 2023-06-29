@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+
+  db:
+    image: postgres:alpine
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: gosha 
+      POSTGRES_PASSWORD: supersecret
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes: 
+      - "D:/Postgres_Data:/var/lib/postgresql/data"
+  
+  pgadmin:
+    image: dpage/pgadmin4
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: gosha@domain.com
+      PGADMIN_DEFAULT_PASSWORD: supersecret
+    depends_on:
+      - db

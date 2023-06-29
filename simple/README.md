@@ -1,0 +1,1 @@
+Prints out `Hello from Docker` and exits
