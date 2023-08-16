@@ -1,23 +1,30 @@
 # PHP Playgroud
 
-Navigate to [http://localhost:80](http://localhost:80)
+If you want to play with PHP online [onlinephp](https://onlinephp.io/)
+
+Start the comtainer and navigate to [http://localhost:80](http://localhost:80)
+
+To run PHP interactive shell
+```sh
+docker compose run www php -a
+```
 
 To build and run the container execute:
-```
-docker-compose up -d
+```sh
+docker compose up -d
 ```
 
 To stop the container execute:
-```
-docker-compose stop
+```sh
+docker compose stop
 ```
 
 To start a stopped container execute:
-```
-docker-compose start
+```sh
+docker compose start
 ```
 
 To remove all stopped containers execute:
-```
-docker-compose rm
+```sh
+docker compose rm
 ```
