@@ -3,7 +3,7 @@
 // shamelessly stolen from https://github.com/adambard/learnxinyminutes-docs/blob/master/ru-ru/php-ru.html.markdown
 
 // Если ваш файл содержит только PHP-код, то можно
-пропустить закрывающий ?>
+// пропустить закрывающий ?>
 
 // А так начинаются комментарии
 
@@ -81,8 +81,12 @@ $unescaped = 'This just contains a slash and a t: \t';
 
 // Заключайте переменные в фигурные скобки, если это необходимо
 $apples = "I have {$number} apples to eat.";
-$oranges = "I have ${number} oranges to eat.";
-$money = "I have $${number} in the bank.";
+
+// !!! DEPRECATED !!!
+// $oranges = "I have ${number} oranges to eat.";
+
+// !!! DEPRECATED !!!
+// $money = "I have $${number} in the bank.";
 
 // Начиная с PHP 5.3, синтаксис nowdocs может использоваться для
 // неинтерполированного многострочного текста
@@ -236,7 +240,7 @@ echo $string + $string; // => 2 (строка превращается в чис
 // Выводится 0 по той причине, что оператор + не может привести строку 'one' к
 // числовому типу
 $string = 'one';
-echo $string + $string; // => 0
+// echo $string + $string; // => 0
 
 // Приведение типов (type casting) может быть использовано для преобразование
 // переменной в другой тип
@@ -254,7 +258,7 @@ $var = null; // Null
 
 // И похожая по действию функция
 $integer = 10;
-$boolen = settype($integer, "string") // теперь $integer имеет строковый тип
+$boolen = settype($integer, "string"); // теперь $integer имеет строковый тип
 
 // settype возвращает true, если преобразование удалось и false в противном случае
 
@@ -431,7 +435,7 @@ echo $function_name(1, 2); // => 3
  * Включения
  */
 
-<?php
+// <?php
 // PHP код внутри включаемого файла должен начинаться с тега PHP.
 
 include 'my-file.php';
@@ -442,14 +446,14 @@ include_once 'my-file.php';
 // Если код в файле my-file.php уже был подключен, он не будет подключен повторно.
 // Это предотвращает ошибку повторного подключения файла.
 
-require 'my-file.php';
-require_once 'my-file.php';
+// require 'my-file.php';
+// require_once 'my-file.php';
 
 // Действует также как и include(), но если файл не удалось подключить,
 // функция выдает фатальную ошибку
 
 // Содержимое файла my-include.php:
-<?php
+// <?php
 
 return 'Anything you like.';
 // Конец файла
@@ -645,36 +649,36 @@ $cls->myTraitMethod(); // Напечатает "I have MyTrait"
 // Это секция особая, ведь объявление пространства имен
 // должно быть самым первым в файле. Позвольте сделать вид, что это не так
 
-<?php
+// <?php
 
 // По умолчанию, классы существуют в глобальном пространстве имен и могут быть
 // вызваны с обратным слешем.
 
-$cls = new \MyClass();
+// $cls = new \MyClass();
 
-// Задание пространства имен файла
-namespace My\Namespace;
+// // Задание пространства имен файла
+// namespace My\Namespace;
 
-class MyClass
-{
-}
+// class MyClass
+// {
+// }
 
-// (из другого файла)
-$cls = new My\Namespace\MyClass;
+// // (из другого файла)
+// $cls = new My\Namespace\MyClass;
 
-// Или внутри другого пространства имен.
-namespace My\Other\Namespace;
+// // Или внутри другого пространства имен.
+// namespace My\Other\Namespace;
 
-use My\Namespace\MyClass;
+// use My\Namespace\MyClass;
 
-$cls = new MyClass();
+// $cls = new MyClass();
 
-// Или вы можете создать псевдоним для пространства имен:
-namespace My\Other\Namespace;
+// // Или вы можете создать псевдоним для пространства имен:
+// namespace My\Other\Namespace;
 
-use My\Namespace as SomeOtherNamespace;
+// use My\Namespace as SomeOtherNamespace;
 
-$cls = new SomeOtherNamespace\MyClass();
+// $cls = new SomeOtherNamespace\MyClass();
 
 
 /**********************
