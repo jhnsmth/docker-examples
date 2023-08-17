@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# see https://leetcode.com/problems/word-frequency/
+
+# Check if the input file exists
+if [ ! -f "words.txt" ]; then
+    echo "Error: words.txt not found.">&2
+    exit 1
+fi
+
+# Use awk to split and count the words, then sort the output
+cat words.txt | awk '{ for(i=1; i<=NF; i++) words[$i]++ } END { for(w in words) print w, words[w] }' | sort -k2 -n -r
