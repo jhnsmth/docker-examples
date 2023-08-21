@@ -1,0 +1,7 @@
+version: "3"
+services:
+  hasura:
+    build: .
+    ports:
+      - "8080:8080"
+
