@@ -3,15 +3,15 @@
 // shamelessly stolen from https://github.com/adambard/learnxinyminutes-docs/blob/master/ru-ru/php-ru.html.markdown
 
 // Если ваш файл содержит только PHP-код, то можно
-// пропустить закрывающий ?>
+// пропустить закрывающий 
 
 // А так начинаются комментарии
 
 # Это тоже комментарий но // предпочтительнее
 
 /*
-	Окруженный /* и */ текст превращается
-	в многострочный комментарий
+    Окруженный  текст превращается
+    в многострочный комментарий
 */
 
 // Используйте "echo" или "print" для вывода.
@@ -37,13 +37,13 @@ Hello World Again!
 // Не рекомендуется использовать кириллические символы в именах (прим. пер.)
 
 // Логические значения нечувствительны к регистру
-$boolean = true;  // или TRUE или True
+$boolean = true; // или TRUE или True
 $boolean = false; // или FALSE или False
 
 // Целые числа
-$int1 = 12;   // => 12
-$int2 = -12;  // => -12
-$int3 = 012;  // => 10 (ведущий 0 обозначает восьмеричное число)
+$int1 = 12; // => 12
+$int2 = -12; // => -12
+$int3 = 012; // => 10 (ведущий 0 обозначает восьмеричное число)
 $int4 = 0x0F; // => 15 (ведущие символы 0x означают шестнадцатеричное число)
 
 // Двоичная запись integer доступна начиная с PHP 5.4.0.
@@ -57,16 +57,16 @@ $float = 1.2e3;
 $float = 7E-10;
 
 // Арифметика
-$sum        = 1 + 1; // 2
+$sum = 1 + 1; // 2
 $difference = 2 - 1; // 1
-$product    = 2 * 2; // 4
-$quotient   = 2 / 1; // 2
+$product = 2 * 2; // 4
+$quotient = 2 / 1; // 2
 
 // Арифметические сокращения
 $number = 0;
-$number += 1;      // Увеличивает $number на 1
-echo $number++;    // Печатает 1 (инкрементируется после вывода)
-echo ++$number;    // Печатает 3 (инкрементируется до вывода)
+$number += 1; // Увеличивает $number на 1
+echo $number++; // Печатает 1 (инкрементируется после вывода)
+echo ++$number; // Печатает 3 (инкрементируется до вывода)
 $number /= $float; // Делится и результат присваивается $number
 
 // Строки должны быть заключены в одинарные кавычки;
@@ -76,7 +76,7 @@ $sgl_quotes = '$String'; // => '$String'
 $dbl_quotes = "This is a $sgl_quotes."; // => 'This is a $String.'
 
 // Специальные (escape) символы работают только в двойных кавычках
-$escaped   = "This contains a \t tab character.";
+$escaped = "This contains a \t tab character.";
 $unescaped = 'This just contains a slash and a t: \t';
 
 // Заключайте переменные в фигурные скобки, если это необходимо
@@ -111,7 +111,7 @@ echo 'Multiple', 'Parameters', 'Valid'; // печатает 'MultipleParametersV
 /********************************
  * Константы
  */
- 
+
 // Константа определяется при помощи define()
 // и никогда не может быть изменена во время выполнения программы!
 
@@ -157,7 +157,7 @@ unset($array[3]);
  * Вывод
  */
 
-echo('Hello World!');
+echo ('Hello World!');
 // Печатает Hello World! на stdout.
 // Stdout это веб-страница запущенная в браузере.
 
@@ -169,13 +169,15 @@ print 'Hello World!'; // Выводит Hello World!
 
 $paragraph = 'paragraph';
 
-echo 100;        // Печать скалярной переменной напрямую
+echo 100; // Печать скалярной переменной напрямую
 echo $paragraph; // или печать переменной
 
 // Если короткие теги разрешены, или ваша версия PHP >= 5.4
 // вы можете использовать сокращенный синтаксис echo
 ?>
-<p><?= $paragraph ?></p>
+<p>
+    <?= $paragraph ?>
+</p>
 <?php
 
 $x = 1;
@@ -278,12 +280,12 @@ if (false) {
 
 if (false) {
     print 'Does not get printed';
-} elseif(true) {
+} elseif (true) {
     print 'Does';
 }
 
 // Тернарный оператор
-print (false ? 'Does not get printed' : 'Does');
+print(false ? 'Does not get printed' : 'Does');
 
 // сокращенная запись тернарного оператора с PHP 5.3
 // эквивалентно "$x ? $x : 'Does'"
@@ -293,7 +295,7 @@ print($x ?: 'Does');
 $x = 0;
 if ($x === '0') {
     print 'Does not print';
-} elseif($x == '1') {
+} elseif ($x == '1') {
     print 'Does not print';
 } else {
     print 'Does print';
@@ -303,9 +305,9 @@ if ($x === '0') {
 ?>
 
 <?php if ($x): ?>
-This is displayed if the test is truthy.
+    This is displayed if the test is truthy.
 <?php else: ?>
-This is displayed otherwise.
+    This is displayed otherwise.
 <?php endif; ?>
 
 <?php
@@ -315,20 +317,21 @@ switch ($x) {
     case '0':
         print 'Switch использует неточное сравнение';
         break; // вы должны использовать break, иначе PHP будет продолжать
-               // исполнять команды следующих секций case 'two' и 'three'
+    // исполнять команды следующих секций case 'two' и 'three'
     case 'two':
     case 'three':
         // делаем что-то, если $x == 'two' или $x == 'three'
         break;
     default:
-        // делаем что-то по умолчанию
+    // делаем что-то по умолчанию
 }
 
 // Циклы: while, do...while и for
 $i = 0;
 while ($i < 5) {
     echo $i++;
-}; // печатает "01234"
+}
+; // печатает "01234"
 
 echo "\n";
 
@@ -382,8 +385,9 @@ for ($i = 0; $i < 5; $i++) {
  */
 
 // Определение функции:
-function my_function () {
-  return 'Hello';
+function my_function()
+{
+    return 'Hello';
 }
 
 echo my_function(); // => "Hello"
@@ -391,9 +395,10 @@ echo my_function(); // => "Hello"
 // Правильное имя функции начинается с буквы или символа подчеркивания
 // и состоит из букв, цифр или символов подчеркивания.
 
-function add ($x, $y = 1) { // $y по умолчанию равно 1
-  $result = $x + $y;
-  return $result;
+function add($x, $y = 1)
+{ // $y по умолчанию равно 1
+    $result = $x + $y;
+    return $result;
 }
 
 echo add(4); // => 5
@@ -404,21 +409,23 @@ echo add(4, 2); // => 6
 
 // Начиная с PHP 5.3 вы можете объявлять анонимные функции:
 $inc = function ($x) {
-  return $x + 1;
+    return $x + 1;
 };
 
 echo $inc(2); // => 3
 
-function foo ($x, $y, $z) {
-  echo "$x - $y - $z";
+function foo($x, $y, $z)
+{
+    echo "$x - $y - $z";
 }
 
 // Функции могут возвращать функции
-function bar ($x, $y) {
-  // Используйте 'use' для передачи внешних переменных
-  return function ($z) use ($x, $y) {
-    foo($x, $y, $z);
-  };
+function bar($x, $y)
+{
+    // Используйте 'use' для передачи внешних переменных
+    return function ($z) use ($x, $y) {
+        foo($x, $y, $z);
+    };
 }
 
 $bar = bar('A', 'B');
@@ -476,18 +483,19 @@ $value = include 'my-include.php';
 
 class MyClass
 {
-    const MY_CONST      = 'value'; // Константа
+    const MY_CONST = 'value'; // Константа
 
-    static $staticVar   = 'static';
+    static $staticVar = 'static';
 
     // Свойства объявляются с указанием их видимости
-    public $property    = 'public';
+    public $property = 'public';
     public $instanceProp;
     protected $prot = 'protected'; // Свойство доступно только потомкам и самому классу
-    private $priv   = 'private';   // Свойство доступно только самому классу
+    private $priv = 'private'; // Свойство доступно только самому классу
 
     // Конструктор описывается с помощью __construct
-    public function __construct($instanceProp) {
+    public function __construct($instanceProp)
+    {
         // Доступ к эземпляру класса с помощью $this
         $this->instanceProp = $instanceProp;
     }
@@ -508,8 +516,8 @@ class MyClass
     }
 }
 
-echo MyClass::MY_CONST;    // Выведет 'value';
-echo MyClass::$staticVar;  // Выведет 'static';
+echo MyClass::MY_CONST; // Выведет 'value';
+echo MyClass::$staticVar; // Выведет 'static';
 MyClass::myStaticMethod(); // Выведет 'I am static';
 
 // Создание нового экземпляра класса используя new
@@ -518,9 +526,9 @@ $my_class = new MyClass('An instance property');
 // Если аргументы отсутствуют, можно не ставить круглые скобки
 
 // Доступ к членам класса используя ->
-echo $my_class->property;     // => "public"
+echo $my_class->property; // => "public"
 echo $my_class->instanceProp; // => "An instance property"
-$my_class->myMethod();        // => "MyClass"
+$my_class->myMethod(); // => "MyClass"
 
 // Наследование классов используя "extends"
 class MyOtherClass extends MyClass
@@ -540,7 +548,7 @@ class MyOtherClass extends MyClass
 
 $my_other_class = new MyOtherClass('Instance prop');
 $my_other_class->printProtectedProperty(); // => Выведет "protected"
-$my_other_class->myMethod();               // Выведет "MyClass > MyOtherClass"
+$my_other_class->myMethod(); // Выведет "MyClass > MyOtherClass"
 
 final class YouCannotExtendMe
 {
@@ -682,9 +690,9 @@ $cls->myTraitMethod(); // Напечатает "I have MyTrait"
 
 
 /**********************
-* Позднее статическое связывание.
-*
-*/
+ * Позднее статическое связывание.
+ *
+ */
 
 class ParentClass
 {
@@ -724,9 +732,9 @@ But I'm ChildClass
 
 
 /**********************
-*  Магические константы
-*
-*/
+ *  Магические константы
+ *
+ */
 
 // Возвращает имя текущего класса. Должно быть использовано внутри класса.
 echo "Current class name is " . __CLASS__;
@@ -734,8 +742,8 @@ echo "Current class name is " . __CLASS__;
 // Возвращает полный путь текущей папки из которой вызван файл.
 echo "Current directory is " . __DIR__;
 
-    // Обычно используют в таких случаях:
-    require __DIR__ . '/vendor/autoload.php';
+// Обычно используют в таких случаях:
+require __DIR__ . '/vendor/autoload.php';
 
 // Возвращает полный путь к текущему файлу.
 echo "Current file path is " . __FILE__;
@@ -758,9 +766,9 @@ echo "Current namespace is " . __TRAIT__;
 
 
 /**********************
-*  Обработка ошибок
-*  
-*/
+ *  Обработка ошибок
+ *  
+ */
 
 // Простую обработку ошибок можно произвести спомощью try catch блока.
 
@@ -781,7 +789,9 @@ try {
 
 // Специальное(кастомное) исключение - exceptions
 
-class MyException extends Exception {}
+class MyException extends Exception
+{
+}
 
 try {
 
