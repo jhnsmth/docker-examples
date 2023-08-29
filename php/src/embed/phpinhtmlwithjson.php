@@ -23,10 +23,12 @@ $test = array(
     <script>
         const mydata = <?php echo json_encode($test); ?>;
     </script>
+
+
     <script>
         // create a <p> node with text form `mydata`
         const para = document.createElement("p");
-        const node = document.createTextNode(mydata["1"]);
+        const node = document.createTextNode(mydata["2"]);
         para.appendChild(node);
         // add it to the body
         document.body.appendChild(para);

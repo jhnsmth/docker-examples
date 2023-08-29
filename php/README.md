@@ -2,11 +2,11 @@
 
 If you want to play with PHP online [onlinephp](https://onlinephp.io/)
 
-Start the comtainer and navigate to [http://localhost:80](http://localhost:80)
+Start the container and navigate to [http://localhost:80](http://localhost:80)
 
 To run PHP interactive shell
 ```sh
-docker compose run www php -a
+docker compose run --rm www php -a
 ```
 
 To build and run the container execute:
