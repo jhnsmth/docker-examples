@@ -1,5 +1,5 @@
 <?php
-$pdo = new PDO('mysql:host=mysql-db-1;dbname=employees', 'root', 'supersecret');
+$pdo = new PDO('mysql:host=mysql-db-1;dbname=employees;charset=utf8', 'root', 'supersecret');
 // $statement = $pdo->query("SELECT 'Привет, дорогой пользователь MySQL!' AS _message FROM DUAL");
 // $row = $statement->fetch(PDO::FETCH_ASSOC);
 

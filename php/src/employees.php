@@ -1,10 +1,11 @@
 <?php
 $name_filter = $_GET['name'] ?? "";
+
 include_once 'db.php';
 
-$statement = $pdo->query("SELECT
+$statement = $pdo->prepare("SELECT
         e.emp_no,
-        CONCAT(e.first_name, ' ', e.last_name) AS full_name,
+        @full_name AS full_name,
         d.dept_name AS department,
         cte.title,
         e.birth_date,
@@ -14,18 +15,11 @@ $statement = $pdo->query("SELECT
         JOIN current_title_emp cte ON cte.emp_no = e.emp_no
         JOIN current_dept_emp cde ON cde.emp_no = e.emp_no
         JOIN departments d ON cde.dept_no = d.dept_no
-    WHERE CONCAT(e.first_name, ' ', e.last_name) LIKE :name_filter
+    WHERE (@full_name := CONCAT(e.first_name, ' ', e.last_name)) LIKE ?
+    ORDER BY e.emp_no
     LIMIT 100");
-$statement->execute(['name_filter' => '%'. $name_filter .'%']);
+$statement->execute(['%' . $name_filter . '%']);
 $employees = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-// var_dump($row);
-
-
-//TODO:
-// - show 100 current employees with columns emp_no, full_name, deparment, title
-// - add filtering by name
-// 
 
 ?>
 
@@ -42,8 +36,7 @@ $employees = $statement->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <main class="container">
         <form method="GET">
-            <input type="search" id="search" name="name" value="<?= $name_filter ?>"
-                placeholder="Enter employees name" />
+            <input type="search" id="search" name="name" value="<?= $name_filter ?>" placeholder="Enter employees name" />
             <input type="submit" value="Submit" />
         </form>
         <table role="grid">
@@ -58,22 +51,16 @@ $employees = $statement->fetchAll(PDO::FETCH_ASSOC);
                 </tr>
             </thead>
             <tbody>
-                <?php foreach($employees as &$row) {
-                    $template = <<<HTML
-                        <tr>
-                            <th scope="row">$row[emp_no]</th>
-                            <td>$row[full_name]</td>
-                            <td>$row[department]</td>
-                            <td>$row[title]</td>
-                            <td>$row[birth_date]</td>
-                            <td>$row[gender]</td>
-                        </tr>
-                    HTML;
-                    
-                    echo $template;
-                }
-                        
-                ?>
+                <?php foreach ($employees as &$row) : ?>
+                    <tr>
+                        <th scope="row"><?= $row['emp_no'] ?></th>
+                        <td><?= $row['full_name'] ?></td>
+                        <td><?= $row['department'] ?></td>
+                        <td><?= $row['title'] ?></td>
+                        <td><?= $row['birth_date'] ?></td>
+                        <td><?= $row['gender'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </main>
