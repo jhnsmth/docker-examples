@@ -28,3 +28,10 @@ To remove all stopped containers execute:
 ```sh
 docker compose rm
 ```
+
+Connect php conatiner with exiting mysql container:
+```sh
+docker network create br0
+docker network connect br0 php-www-1
+docker network connect br0 mysql-db-1
+```
